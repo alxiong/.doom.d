@@ -61,7 +61,7 @@
        electric          ; smarter, keyword-based electric-indent
        ;;eshell            ; a consistent, cross-platform shell (WIP)
        imenu             ; an imenu sidebar and searchable code index
-       term              ; terminals in Emacs
+       ;;term              ; terminals in Emacs
        ;;vc                ; version-control and Emacs, sitting in a tree
 
        :tools
@@ -140,7 +140,7 @@
        ;;ruby              ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
-       sh                  ; she sells (ba|z|fi)sh shells on the C xor
+       ;;sh                  ; she sells (ba|z|fi)sh shells on the C xor
        solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
