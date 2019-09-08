@@ -12,10 +12,13 @@
 ;; better code completion with tabnine(use-package company-tabnine :ensure t)
 (add-to-list 'company-backends #'company-tabnine)
 ;; Trigger completion immediately.
-(setq company-idle-delay 0)
-
+(setq company-idle-delay 0.1
+      company-minimum-prefix-length 2)
 ;; Number the candidates (use M-1, M-2 etc to select completions).
 (setq company-show-numbers t)
+
+;; make minial ranger (i.e. deer) the default dir handler
+(ranger-override-dired-mode t)
 
 ;; Use the tab-and-go frontend.
 ;; Allows TAB to select and complete at the same time.
@@ -45,7 +48,25 @@
   (exec-path-from-shell-copy-env "GOPATH"))
 
 ;;; Golang
-(add-hook 'before-save-hook #'gofmt-before-save)
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 ;;; Rust
 (setq rustic-format-on-save t)
+
+;;; CC0 compiler
+(setq c0-root "/Users/alex/dev/cmu15-122/cc0/")
+(load (concat c0-root "c0-mode/c0.el"))
+
+;;; Protobuffer
+(defconst my-protobuf-style
+  '((c-basic-offset . 4)
+    (indent-tabs-mode . nil)))
+
+(add-hook 'protobuf-mode-hook
+  (lambda () (c-add-style "protobuf-style" my-protobuf-style t)))
+
+;;; Java
+;; JAVA_HOME decides the java sdk version
+(cond ((string-equal system-type "darwin")
+       (setenv "JAVA_HOME" "/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home")))
