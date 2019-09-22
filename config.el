@@ -40,22 +40,12 @@
        ))
 
 ;; Set up Emacs's `exec-path` to math PATH of the user's shell
-(let ((path-from-shell (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator)))
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "GOPATH"))
 
-;;; Golang
-(setq gofmt-command "goimports")
-(add-hook 'before-save-hook 'gofmt-before-save)
-
-;;; Rust
-(setq rustic-format-on-save t)
-
 ;;; CC0 compiler
-(setq c0-root "/Users/alex/dev/cmu15-122/cc0/")
+(setq c0-root "~/dev/cmu15-122/cc0/")
 (load (concat c0-root "c0-mode/c0.el"))
 
 ;;; Protobuffer
@@ -65,6 +55,7 @@
 
 (add-hook 'protobuf-mode-hook
   (lambda () (c-add-style "protobuf-style" my-protobuf-style t)))
+(add-hook 'protobuf-mode-hook 'display-line-numbers-mode)
 
 ;;; Java
 ;; JAVA_HOME decides the java sdk version
