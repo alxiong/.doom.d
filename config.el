@@ -10,12 +10,18 @@
       doom-variable-pitch-font (font-spec :family "Noto Sans" :size 15))
 
 ;; better code completion with tabnine(use-package company-tabnine :ensure t)
-(add-to-list 'company-backends #'company-tabnine)
-;; Trigger completion immediately.
-(setq company-idle-delay 0.1
-      company-minimum-prefix-length 2)
-;; Number the candidates (use M-1, M-2 etc to select completions).
-(setq company-show-numbers t)
+(defun add-company-tabnine ()
+  (add-to-list (make-local-variable 'company-backends) 'company-tabnine))
+
+(def-package! company-tabnine
+  :config
+  (setq company-idle-delay 0
+        company-show-numbers t)
+  (add-hook! (c-mode-local-vars
+              c++-mode-local-vars
+              emacs-lisp-mode-local-vars
+              python-mode-local-vars)
+    #'add-company-tabnine))
 
 ;; make minial ranger (i.e. deer) the default dir handler
 (ranger-override-dired-mode t)
