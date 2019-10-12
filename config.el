@@ -45,12 +45,6 @@
        (setq ns-function-modifier 'hyper) ; make Fn key do Hyper
        ))
 
-;; Set up Emacs's `exec-path` to math PATH of the user's shell
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOPATH")
-  (exec-path-from-shell-copy-env "EDITOR"))
-
 ;;; CC0 compiler
 (setq c0-root "~/dev/cmu15-122/cc0/")
 (load (concat c0-root "c0-mode/c0.el"))
