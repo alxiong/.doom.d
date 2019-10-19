@@ -59,10 +59,12 @@
         +ranger         ; bringing the goodness of ranger to dired
         +icons          ; colorful icons for dired-mode
         )
-       electric          ; smarter, keyword-based electric-indent
+       electric-indent     ; smarter, keyword-based electric-indent
+       eshell
+       imenu
        
        :term
-       eshell
+       (term term multi-term)
        
        :tools
        ;;ansible
