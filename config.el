@@ -62,3 +62,6 @@
 ;; JAVA_HOME decides the java sdk version
 (cond ((string-equal system-type "darwin")
        (setenv "JAVA_HOME" "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home")))
+
+;;; Treemacs
+(setq doom-themes-treemacs-theme "doom-colors")

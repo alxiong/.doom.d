@@ -36,7 +36,7 @@
         +defaults)       ; default popup rules
        pretty-code       ; replace bits of code with pretty symbols
        ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
-       ;;treemacs          ; a project drawer, like neotree but cooler
+       treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
@@ -59,12 +59,11 @@
         +ranger         ; bringing the goodness of ranger to dired
         +icons          ; colorful icons for dired-mode
         )
-       electric-indent     ; smarter, keyword-based electric-indent
-       eshell
-       imenu
-       
+       electric     ; smarter, keyword-based electric-indent
+
        :term
        (term term multi-term)
+       eshell
        
        :tools
        ;;ansible
