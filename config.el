@@ -36,9 +36,10 @@
         ))
 
 ;;; lsp
+(after! lsp
+  (setq lsp-enable-file-watchers nil))
 (after! lsp-ui
-  (setq lsp-ui-sideline-enable nil
-        lsp-enable-file-watchers nil)
+  (setq lsp-ui-sideline-enable nil)
   (map!
    :map lsp-ui-peek-mode-map
    "h" #'lsp-ui-peek--select-prev-file
@@ -61,21 +62,15 @@
     ))
 (after! ccls
   (setq ccls-initialization-options
-        '(:clang (:extraArgs ["-isystem/Library/Developer/CommandLineTools/usr/include/c++/v1"
-                              "-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+        '(:clang (:extraArgs ["-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
                               "-isystem/usr/local/include"
                               "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"
                               "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
                               "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
+                              "-isystem/Library/Developer/CommandLineTools/usr/include/c++/v1"
                               "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"]
                   :resourceDir "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0")))
   )
-
-;; (after! ccls
-;;   (setq ccls-initialization-options
-;;         '(:clang (:extraArgs ["/Library/Developer/CommandLineTools/usr/include/c++/v1", "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"])
-;;                  (:resourceDir "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include")))
-;;   )
 
 ;;; CC0 compiler
 (setq c0-root "~/dev/cmu15-122/cc0/")
@@ -96,3 +91,6 @@
 
 ;;; Treemacs
 (setq doom-themes-treemacs-theme "doom-colors")
+
+;;; Doom breaking changes
+(fset 'battery-update #'ignore)
