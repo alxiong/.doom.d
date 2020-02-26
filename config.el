@@ -62,13 +62,14 @@
     ))
 (after! ccls
   (setq ccls-initialization-options
-        '(:clang (:extraArgs ["-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
-                              "-isystem/usr/local/include"
-                              "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"
-                              "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
-                              "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
-                              "-isystem/Library/Developer/CommandLineTools/usr/include/c++/v1"
-                              "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"]
+        '(:clang (:extraArgs
+                  ["-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+                   "-isystem/usr/local/include"
+                   "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"
+                   "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
+                   "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
+                   "-isystem/Library/Developer/CommandLineTools/usr/include/c++/v1"
+                   "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"]
                   :resourceDir "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0")))
   )
 
@@ -91,6 +92,9 @@
 
 ;;; Treemacs
 (setq doom-themes-treemacs-theme "doom-colors")
+
+;;; Rust
+(setq rustic-lsp-server 'rust-analyzer)
 
 ;;; Doom breaking changes
 (fset 'battery-update #'ignore)
