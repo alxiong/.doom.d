@@ -61,17 +61,31 @@
     (objc-mode ".m")
     ))
 (after! ccls
-  (setq ccls-initialization-options
-        '(:clang (:extraArgs
-                  ["-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
-                   "-isystem/usr/local/include"
-                   "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"
-                   "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
-                   "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
-                   "-isystem/Library/Developer/CommandLineTools/usr/include/c++/v1"
-                   "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"]
-                  :resourceDir "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0")))
-  )
+  (cond ((string-equal system-type "darwin")
+         (setq ccls-initialization-options
+               '(:clang (:extraArgs
+                         ["-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"
+                          "-isystem/usr/local/include"
+                          "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"
+                          "-isystem/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
+                          "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
+                          "-isystem/Library/Developer/CommandLineTools/usr/include/c++/v1"
+                          "-isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"]
+                         :resourceDir "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0")))
+         ))
+  (cond ((string-equal system-type "gnu/linux")
+         (setq ccls-initialization-options
+               '(:clang (:extraArgs
+                         ["/usr/include/c++/9"
+                          "/usr/include/x86_64-linux-gnu/c++/9"
+                          "/usr/include/c++/9/backward"
+                          "/usr/local/include"
+                          "/usr/lib/llvm-9/lib/clang/9.0.0/include"
+                          "/usr/include/x86_64-linux-gnu"
+                          "/usr/include"]
+                         :resourceDir "/usr/lib/llvm-9/lib/clang/9.0.0")))
+         )))
+
 
 ;;; CC0 compiler
 (setq c0-root "~/dev/cmu15-122/cc0/")
@@ -95,6 +109,11 @@
 
 ;;; Rust
 (setq rustic-lsp-server 'rust-analyzer)
+
+;;; Sh mode
+;; disable company completion as it slows down emacs significantly
+(add-hook! 'sh-mode-hook
+  (company-mode -1))
 
 ;;; Doom breaking changes
 (fset 'battery-update #'ignore)
