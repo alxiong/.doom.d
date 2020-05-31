@@ -12,6 +12,10 @@
 (setq doom-font (font-spec :family "Fira Code" :size 13)
       doom-variable-pitch-font (font-spec :family "Noto Sans" :size 15))
 
+;; Base16 Theme
+;;
+(load-theme 'base16-onedark t)
+
 ;; make minial ranger (i.e. deer) the default dir handler
 (ranger-override-dired-mode t)
 
@@ -88,8 +92,8 @@
 
 
 ;;; CC0 compiler
-(setq c0-root "~/dev/cmu15-122/cc0/")
-(load (concat c0-root "c0-mode/c0.el"))
+;; (setq c0-root "~/dev/cmu15-122/cc0/")
+;; (load (concat c0-root "c0-mode/c0.el"))
 
 ;;; Protobuffer
 (defconst my-protobuf-style
@@ -108,7 +112,7 @@
 (setq doom-themes-treemacs-theme "doom-colors")
 
 ;;; Rust
-(setq rustic-lsp-server 'rust-analyzer)
+;; (setq rustic-lsp-server 'rust-analyzer)
 
 ;;; Sh mode
 ;; disable company completion as it slows down emacs significantly
@@ -117,3 +121,7 @@
 
 ;;; Doom breaking changes
 (fset 'battery-update #'ignore)
+
+;;; Markdown
+;; use embedded webkit for preview of github-style of markdown files
+(setq grip-preview-use-webkit t)
