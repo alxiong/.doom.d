@@ -119,6 +119,9 @@
 (add-hook! 'sh-mode-hook
   (company-mode -1))
 
+;;; sh mode
+;; disable company completion when editing bash script, significantly slows emacs down
+(add-hook! 'sh-mode-hook (company-mode -1))
 ;;; Doom breaking changes
 (fset 'battery-update #'ignore)
 

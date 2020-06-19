@@ -31,7 +31,7 @@
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
-       (pretty-code +fira)       ; replace bits of code with pretty symbols
+       ;;(pretty-code +fira)  ; replace bits of code with pretty symbols
        ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
        ;;treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
@@ -54,8 +54,7 @@
        :emacs
        (dired            ; making dired pretty [functional]
         +ranger         ; bringing the goodness of ranger to dired
-        +icons          ; colorful icons for dired-mode
-        )
+        +icons)
        electric     ; smarter, keyword-based electric-indent
        (ibuffer +icons)
        vc
@@ -79,7 +78,8 @@
        (eval +overlay)              ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
-        +docsets)        ; ...or in Dash docsets locally
+        +docsets
+        +dictionary)        ; ...or in Dash docsets locally
        (lsp +completion)
        ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
