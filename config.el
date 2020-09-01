@@ -80,15 +80,21 @@
   (cond ((string-equal system-type "gnu/linux")
          (setq ccls-initialization-options
                '(:clang (:extraArgs
-                         ["/usr/include/c++/9"
+                         ["/usr/include/c++/8"
+                          "/usr/include/c++/9"
+                          "/usr/include/x86_64-linux-gnu/c++/8"
                           "/usr/include/x86_64-linux-gnu/c++/9"
+                          "/usr/include/c++/8/backward"
                           "/usr/include/c++/9/backward"
                           "/usr/local/include"
+                          "/usr/lib/llvm-7/lib/clang/7.0.1/include"
+                          "/usr/lib/gcc/x86_64-linux-gnu/8/include/"
                           "/usr/lib/llvm-9/lib/clang/9.0.0/include"
                           "/usr/include/x86_64-linux-gnu"
                           "/usr/include"]
-                         :resourceDir "/usr/lib/llvm-9/lib/clang/9.0.0")))
-         )))
+                         :resourceDir "/usr/lib/llvm-7/lib/clang/7.0.1")))
+         ))
+)
 
 
 ;;; CC0 compiler
@@ -112,7 +118,8 @@
 (setq doom-themes-treemacs-theme "doom-colors")
 
 ;;; Rust
-;; (setq rustic-lsp-server 'rust-analyzer)
+;; (after! rustic
+;;   (setq lsp-rust-server 'rust-analyzer))
 
 ;;; Sh mode
 ;; disable company completion as it slows down emacs significantly
@@ -128,3 +135,7 @@
 ;;; Markdown
 ;; use embedded webkit for preview of github-style of markdown files
 (setq grip-preview-use-webkit t)
+
+;;; Latex
+(setq reftex-default-bibliography "~/work/latex/alex.bib")
+(setq +latex-viewers '(pdf-tools))

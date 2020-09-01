@@ -7,3 +7,5 @@
 ;; (package! builtin-package :disable t)
 (package! base16-theme)
 (package! sml-mode)
+;; due to issue: https://github.com/rust-analyzer/rust-analyzer/issues/5647
+(package! lsp-mode :pin "bdbd2d0ccfe02f6721ea942e82e5178f4b216228")
