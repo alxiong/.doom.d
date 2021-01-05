@@ -118,8 +118,8 @@
 (setq doom-themes-treemacs-theme "doom-colors")
 
 ;;; Rust
-;; (after! rustic
-;;   (setq lsp-rust-server 'rust-analyzer))
+(after! rustic
+  (setq rustic-lsp-server 'rls))
 
 ;;; Sh mode
 ;; disable company completion as it slows down emacs significantly

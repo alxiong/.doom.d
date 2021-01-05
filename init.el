@@ -57,6 +57,7 @@
        electric     ; smarter, keyword-based electric-indent
        (ibuffer +icons)
        vc
+       undo
 
        :term
        (term term multi-term)
